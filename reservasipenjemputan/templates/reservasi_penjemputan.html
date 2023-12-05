@@ -1,0 +1,46 @@
+{% extends 'reservasi_base.html' %}
+
+{% block additional_meta %}
+<title>FORM PENGISIAN ALAMAT PEMESANAN MAKANAN</title>
+<style>
+    .centered {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
+{% endblock additional_meta %}
+
+{% block content %}
+<div class="mainpnl centered container w-75 align-middle" id="outline1">
+    <div class = "admin">
+        <h1 style="text-align: center">FORM PENGISIAN ALAMAT PEMESANAN MAKANAN</h1>
+
+        <form method="POST" action="">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td><p>Jalan:</p><input required type="text" name="jalan" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td><p>Kecamatan:</p><input required type="text" name="kecamatan" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td><p>Kota:</p><input required type="text" name="kota" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><button class="btn btn-outline-primary" type="submit" value="Simpan">Lanjut</button></td>
+                </tr>
+            </table>
+        </form>
+        <br>
+
+    </div>
+</div>
+{% endblock content %}
