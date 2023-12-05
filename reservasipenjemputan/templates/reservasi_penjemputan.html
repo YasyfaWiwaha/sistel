@@ -1,46 +1,70 @@
-{% extends 'reservasi_base.html' %}
+{% extends 'base.html' %}
 
-{% block additional_meta %}
-<title>FORM PENGISIAN ALAMAT PEMESANAN MAKANAN</title>
+{% block content %}
 <style>
+    ul {
+        font-family: ui-serif;
+        font-size: 20px;
+    }
     .centered {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
     }
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
 </style>
-{% endblock additional_meta %}
 
-{% block content %}
-<div class="mainpnl centered container w-75 align-middle" id="outline1">
-    <div class = "admin">
-        <h1 style="text-align: center">FORM PENGISIAN ALAMAT PEMESANAN MAKANAN</h1>
+<table>
+    <tr>
+        <th>No</th>
+        <th>Restoran</th>
+        <th>Nama Kurir</th>
+        <th>Waktu Pesanan Dibuat</th>
+        <th>Status Pesanan</th>
+        <th>Rating</th>
+        <th>Aksi</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Warung Mantap Depok</td>
+        <td>Doni Suryana</td>
+        <td>2022-11-04-11:30:05</td>
+        <td>Pesanan Selesai</td>
+        <td></td>
+        <td>
+            <a class="btn btn-primary" href="#">
+                Detail
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>KFC Depok</td>
+        <td></td>
+        <td>2022-11-01-09:00:01</td>
+        <td>Pesanan Dibatalkan</td>
+        <td>4</td>
+        <td>
+            <a class="btn btn-primary" href="#">
+                Detail
+            </a>
+        </td>
+    </tr>
+</table>
 
-        <form method="POST" action="">
-            {% csrf_token %}
-            <table>
-                <tr>
-                    <td><p>Jalan:</p><input required type="text" name="jalan" class="form-control"></td>
-                </tr>
-                <tr>
-                    <td><p>Kecamatan:</p><input required type="text" name="kecamatan" class="form-control"></td>
-                </tr>
-                <tr>
-                    <td><p>Kota:</p><input required type="text" name="kota" class="form-control"></td>
-                </tr>
-                <tr>
-                    <td>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td><button class="btn btn-outline-primary" type="submit" value="Simpan">Lanjut</button></td>
-                </tr>
-            </table>
-        </form>
-        <br>
-
-    </div>
-</div>
 {% endblock content %}
