@@ -81,7 +81,8 @@ DATABASES = {
         "ENGINE": 'django.db.backends.postgresql',
         "NAME": 'ptgjpywr',
         "USER": 'ptgjpywr',
-        "PASSWORD": 'IC8KMna_ydHA5_Oopwg7_8E1FoP7JFKW',
+        "PASSWORD": 'vZujOyEfjNgP-dsWmKQvH8vj67VdBFQ1',
+        "HOST": 'pom.db.elephantsql.com',
         "PORT": '5432',
     }
 }

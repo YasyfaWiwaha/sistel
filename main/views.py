@@ -78,11 +78,11 @@ def show_login(request):
 
                 setLoginSession(request, email)
 
-                if(request.session['akun_pengguna']['is_hotel']):
-                    return redirect('hotel:dashboard')
+                # if(request.session['akun_pengguna']['is_hotel']):
+                #     return redirect('hotel:dashboard')
 
-                if(request.session['akun_pengguna']['is_customer']):
-                    return redirect('customer:dashboard')
+                # if(request.session['akun_pengguna']['is_customer']):
+                #     return redirect('customer:dashboard')
 
             except Exception as e:
                 print(e)
@@ -91,9 +91,6 @@ def show_login(request):
                 return render(request, 'login.html', context)
 
     return render(request, "login.html")
-
-def show_main(request):
-    return render(request, "mainPage.html")
 
 def show_register(request):
     return render(request, "register.html")
@@ -104,11 +101,8 @@ def show_register_hotel(request):
         print(request.POST)
         email = request.POST.get('email')
         password = request.POST.get('password')
-        nama = request.POST.get('nama').split()
-        fname = nama[0]
-        lname = ''
-        if(len(nama) > 1):
-            lname = nama[-1]
+        fname = request.POST.get('fname')
+        lname = request.POST.get('lname')
         nohp =request.POST.get('notelp')
         hname =request.POST.get('hname')
         hbranch =request.POST.get('hbranch')
@@ -133,7 +127,7 @@ def show_register_hotel(request):
                 return render(request, 'registerHotel.html', context)
 
         setLoginSession(request, email)
-        return redirect('hotel:dashboard')
+        return redirect('main:show_login')
 
     return render(request, "registerHotel.html")
 
@@ -143,11 +137,8 @@ def show_register_customer(request):
         print(request.POST)
         email = request.POST.get('email')
         password = request.POST.get('password')
-        nama = request.POST.get('nama').split()
-        fname = nama[0]
-        lname = ''
-        if(len(nama) > 1):
-            lname = nama[-1]
+        fname = request.POST.get('fname')
+        lname = request.POST.get('lname')
         nohp = request.POST.get('nohp')
         nik = request.POST.get('nik')
 
@@ -166,5 +157,5 @@ def show_register_customer(request):
                 return render(request, 'registerCustomer.html', context)
 
         setLoginSession(request, email)
-        return redirect('customer:dashboard')
+        return redirect('main:show_login')
     return render(request, "registerCustomer.html")
