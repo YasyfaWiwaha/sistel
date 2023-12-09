@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-n@k&vnw*ui1qx^7aibgn5qg&+he=xhuy8=@x5*$^c6zgo$km37
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "main",
+    "reservasipenjemputan",
 ]
 
 MIDDLEWARE = [
@@ -47,6 +49,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = "sistel.urls"
@@ -54,7 +57,7 @@ ROOT_URLCONF = "sistel.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / 'templates'],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -75,8 +78,12 @@ WSGI_APPLICATION = "sistel.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": 'django.db.backends.postgresql',
+        "NAME": 'ptgjpywr',
+        "USER": 'ptgjpywr',
+        "PASSWORD": 'vZujOyEfjNgP-dsWmKQvH8vj67VdBFQ1',
+        "HOST": 'pom.db.elephantsql.com',
+        "PORT": '5432',
     }
 }
 

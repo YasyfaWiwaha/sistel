@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    ul {
+        font-family: ui-serif;
+        font-size: 20px;
+    }
+    .centered {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+<table>
+    <tr>
+        <th>No</th>
+        <th>Restoran</th>
+        <th>Nama Kurir</th>
+        <th>Waktu Pesanan Dibuat</th>
+        <th>Status Pesanan</th>
+        <th>Rating</th>
+        <th>Aksi</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Warung Mantap Depok</td>
+        <td>Doni Suryana</td>
+        <td>2022-11-04-11:30:05</td>
+        <td>Pesanan Selesai</td>
+        <td></td>
+        <td>
+            <a class="btn btn-primary" href="#">
+                Detail
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>KFC Depok</td>
+        <td></td>
+        <td>2022-11-01-09:00:01</td>
+        <td>Pesanan Dibatalkan</td>
+        <td>4</td>
+        <td>
+            <a class="btn btn-primary" href="#">
+                Detail
+            </a>
+        </td>
+    </tr>
+</table>
+
+{% endblock content %}
