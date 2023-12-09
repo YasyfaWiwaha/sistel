@@ -77,8 +77,11 @@ WSGI_APPLICATION = "sistel.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": 'django.db.backends.postgresql',
+        "NAME": 'ptgjpywr',
+        "USER": 'ptgjpywr',
+        "PASSWORD": 'IC8KMna_ydHA5_Oopwg7_8E1FoP7JFKW',
+        "PORT": '5432',
     }
 }
 
