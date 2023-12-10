@@ -4,6 +4,8 @@ from django.db import connection, DatabaseError
 from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
 
+import json
+
 # Class USER
 class User:
     def __init__(self, email, is_hotel, is_customer):
@@ -19,13 +21,14 @@ class User:
         }
     
 def setLoginSession(request, email):
+    print('SEX')
     user = None
     isHotel = True
     isCustomer = True
     cursor = connection.cursor()
 
     #Get email
-    cursor.execute("select * from sistel.user_acc where email = '{}'".format(email))
+    cursor.execute("select * from sistel.user where email = '{}'".format(email))
 
     row = cursor.fetchone()
     email = row[0]
@@ -64,19 +67,25 @@ def show_login(request):
         email = request.POST.get('email')
         print(email)
         passw = request.POST.get('password')
+        print(passw)
         with connection.cursor() as cursor:
             try:
-                cursor.execute("select * from sistel.user_acc where email = '{}'".format(email))
+                print('MASUK TRY')
+                cursor.execute("select * from sistel.user where email = '{}'".format(email))
+                print('Cursor masuk')
 
                 row = cursor.fetchall()
-
-                print(row)
 
                 password  = row[0][1]
 
                 if password != passw: raise Exception
 
                 setLoginSession(request, email)
+
+                print('pass!')
+
+                # print(row)
+                # print(request.session)
 
                 # if(request.session['akun_pengguna']['is_hotel']):
                 #     return redirect('hotel:dashboard')

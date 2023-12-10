@@ -79,11 +79,11 @@ WSGI_APPLICATION = "sistel.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": 'django.db.backends.postgresql',
-        "NAME": 'ptgjpywr',
-        "USER": 'ptgjpywr',
-        "PASSWORD": 'vZujOyEfjNgP-dsWmKQvH8vj67VdBFQ1',
-        "HOST": 'pom.db.elephantsql.com',
+        "ENGINE": 'django.db.backends.postgresql_psycopg2',
+        "NAME": 'sistel_db',
+        "USER": 'postgres',
+        "PASSWORD": '(Terra4Meth5)',
+        "HOST": 'localhost',
         "PORT": '5432',
     }
 }
@@ -124,6 +124,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
+
+
+# This is the directory for storing `collectstatic` results.
+# This shouldn't be included in your Git repository.
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

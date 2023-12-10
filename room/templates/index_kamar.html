@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block script %}
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'room/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="header">
+    <h1>Kamar Hotel</h1>
+</div>
+  
+  <div>
+      <button>Add New Room</button>
+  </div>
+  
+  <div class="container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nomor Kamar</th>
+          <th>Harga Kamar</th> 
+          <th>Lantai Kamar</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for room in rooms %}
+        <tr>
+            <td>{}</td>
+            <td>{}</td>
+            <td>{}</td>
+            <button class="btn btn-success">Add Facilities</button> 
+            <button class="btn btn-danger">Delete</button>
+          </td>
+        </tr>
+        {% end for %}
+      </tbody>
+    </table>
+    
+    <button class="btn btn-primary mt-3">Add New Room</button>
+</div>
+{% endblock %}

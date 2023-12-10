@@ -1,6 +1,6 @@
 from django import forms
 
-class createRoomForm(forms.Form):
+class CreateRoomForm(forms.Form):
     
     nomor_kamar = forms.CharField(
         label='Nomor Kamar',
@@ -32,7 +32,7 @@ class createRoomForm(forms.Form):
         }))
 
 
-class updateRoomForm(forms.Form):
+class UpdateRoomForm(forms.Form):
 
     nomor_kamar = forms.CharField(
         label='Nomor Kamar',
