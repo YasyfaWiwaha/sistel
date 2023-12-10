@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block additional_meta %}
+<title>Daftar Tarif</title>
+<style>
+    ul {
+        font-family: ui-serif;
+        font-size: 20px;
+    }
+    .centered {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+     table {
+         font-family: arial, sans-serif;
+         border-collapse: collapse;
+         width: 100%;
+     }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+{% endblock additional_meta %}
+
+{% block content %}
+<div class="mainpnl centered container w-75 align-middle" id="outline1">
+    <h1>DAFTAR RESERVASI KAMAR</h1>
+    <table>
+        <tr>
+            <th>No</th>
+            <th>ID Reservasi</th>
+            <th>Nomor Kamar</th>
+            <th>Date</th>
+            <th>Status Reservasi</th>
+            <th>Action</th>
+        </tr>
+        {% for data in data %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{data.rsv_id}}</td>
+            <td>{{data.rnum}}</td>
+            <td>{{data.datetime}}</td>
+            <td>{{data.isactive}}</td>
+            <td>
+                <a href="/hotel/ubah_status/{{data.id}}" class="btn btn-primary">Ubah Status</a>
+                <a href="/hotel/detail_reservasi/{{data.id}}" class="btn btn-primary">Detail</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock content %}
