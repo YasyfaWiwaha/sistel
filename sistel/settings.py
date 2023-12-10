@@ -38,8 +38,12 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "main",
+<<<<<<< HEAD
     "room",
     "reservasipenjemputan",
+=======
+    "ungu",
+>>>>>>> ef48c8a7319118ef58ad70d7f74049b6d5f58472
 ]
 
 MIDDLEWARE = [
