@@ -53,7 +53,7 @@ def setLoginSession(request, email):
 
     if isCustomer:
         user = User(email, False, True)
-
+    
     if user:
         request.session['akun_pengguna'] = user.getJson()
         print(request.session['akun_pengguna'])
@@ -73,13 +73,12 @@ def show_login(request):
                 print(row)
 
                 password  = row[0][1]
-
                 if password != passw: raise Exception
 
                 setLoginSession(request, email)
 
-                # if(request.session['akun_pengguna']['is_hotel']):
-                #     return redirect('hotel:dashboard')
+                if(request.session['akun_pengguna']['is_hotel']):
+                    return redirect('ungu:daftar_reservasi_hotel')
 
                 # if(request.session['akun_pengguna']['is_customer']):
                 #     return redirect('customer:dashboard')
