@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-n@k&vnw*ui1qx^7aibgn5qg&+he=xhuy8=@x5*$^c6zgo$km37
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['*', '.vercel.app']
 
 
 # Application definition
@@ -81,11 +81,11 @@ WSGI_APPLICATION = "sistel.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": 'django.db.backends.postgresql_psycopg2',
-        "NAME": 'sistel_db',
+        "NAME": 'railway',
         "USER": 'postgres',
-        "PASSWORD": '(Terra4Meth5)',
-        "HOST": 'localhost',
-        "PORT": '5432',
+        "PASSWORD": '2*d145612-44g1Fg1fCf65cAc31a313E',
+        "HOST": 'monorail.proxy.rlwy.net',
+        "PORT": '46250',
     }
 }
 
