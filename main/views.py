@@ -21,7 +21,6 @@ class User:
         }
     
 def setLoginSession(request, email):
-    print('SEX')
     user = None
     isHotel = True
     isCustomer = True
@@ -48,8 +47,6 @@ def setLoginSession(request, email):
     if row == None: isCustomer = False
 
     # Cek cek
-    print(email)
-    print(isCustomer)
 
     if isHotel:
         user = User(email, True, False)
@@ -65,34 +62,22 @@ def setLoginSession(request, email):
 def show_login(request):
     if request.method == 'POST':
         email = request.POST.get('email')
-        print(email)
         passw = request.POST.get('password')
-        print(passw)
         with connection.cursor() as cursor:
             try:
-                print('MASUK TRY')
                 cursor.execute("select * from sistel.user where email = '{}'".format(email))
-                print('Cursor masuk')
 
                 row = cursor.fetchall()
 
+
                 password  = row[0][1]
+
                 if password != passw: raise Exception
 
                 setLoginSession(request, email)
 
-<<<<<<< HEAD
-                print('pass!')
-
-                # print(row)
-                # print(request.session)
-
                 # if(request.session['akun_pengguna']['is_hotel']):
                 #     return redirect('hotel:dashboard')
-=======
-                if(request.session['akun_pengguna']['is_hotel']):
-                    return redirect('ungu:daftar_reservasi_hotel')
->>>>>>> ef48c8a7319118ef58ad70d7f74049b6d5f58472
 
                 # if(request.session['akun_pengguna']['is_customer']):
                 #     return redirect('customer:dashboard')
@@ -111,7 +96,6 @@ def show_register(request):
 @csrf_exempt
 def show_register_hotel(request):
     if request.method == 'POST':
-        print(request.POST)
         email = request.POST.get('email')
         password = request.POST.get('password')
         fname = request.POST.get('fname')

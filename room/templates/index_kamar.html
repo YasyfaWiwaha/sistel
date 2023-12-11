@@ -10,13 +10,9 @@
 
 {% block content %}
 
-<div class="header">
-    <h1>Kamar Hotel</h1>
-</div>
-  
-  <div>
-      <button>Add New Room</button>
-  </div>
+    <div class="jumbotron text-center bg-primary text-white">
+        <h1>Kamar Hotel</h1>
+    </div>
   
   <div class="container">
     <table class="table table-striped">
@@ -31,17 +27,22 @@
       <tbody>
         {% for room in rooms %}
         <tr>
-            <td>{}</td>
-            <td>{}</td>
-            <td>{}</td>
-            <button class="btn btn-success">Add Facilities</button> 
-            <button class="btn btn-danger">Delete</button>
+            <td>{{ room.2 }}</td>
+            <td>{{ room.3 }}</td>
+            <td>{{ room.4 }}</td>
+            <td>
+                <a class="btn btn-success" href="{% url 'room:update_room' room_number=room.2 %}">Add Facilities</a>
+                <a class="btn btn-info" href="{% url 'room:update_room' room_number=room.2 %}">Update</a>
+                <a class="btn btn-danger" href="{% url 'room:delete_room' room_number=room.2%}">Delete</a>
+            </td>
+
           </td>
         </tr>
-        {% end for %}
+        {% endfor %}
       </tbody>
     </table>
-    
-    <button class="btn btn-primary mt-3">Add New Room</button>
+
+    <a class="btn btn-primary mt-3" href="{% url 'room:add_room' %}">Add New Room</a>
+
 </div>
 {% endblock %}

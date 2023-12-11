@@ -10,7 +10,6 @@ class CreateRoomForm(forms.Form):
             'class': 'form-control',
             'placeholder': 'Nomor Kamar',
             'type': 'text',
-            'readonly': 'true'
         }))
 
     harga = forms.DecimalField(
@@ -19,46 +18,31 @@ class CreateRoomForm(forms.Form):
         widget=forms.NumberInput(attrs={
             'class': 'form-control',
             'placeholder': 'Harga',
-            'readonly': 'true'
         }))
     
     lantai = forms.DecimalField(
-        label='Harga',
+        label='Lantai',
         required=True,
         widget=forms.NumberInput(attrs={
             'class': 'form-control',
             'placeholder': 'Lantai',
-            'readonly': 'true'
         }))
 
 
 class UpdateRoomForm(forms.Form):
 
-    nomor_kamar = forms.CharField(
-        label='Nomor Kamar',
-        required=True,
-        max_length=30,
-        widget=forms.TextInput(attrs={
-            'class': 'form-control',
-            'placeholder': 'Nomor Kamar',
-            'type': 'text',
-            'readonly': 'true'
-        }))
-
     harga = forms.DecimalField(
         label='Harga',
         required=True,
         widget=forms.NumberInput(attrs={
             'class': 'form-control',
             'placeholder': 'Harga',
-            'readonly': 'true'
         }))
     
     lantai = forms.DecimalField(
-        label='Harga',
+        label='Lantai',
         required=True,
         widget=forms.NumberInput(attrs={
             'class': 'form-control',
             'placeholder': 'Lantai',
-            'readonly': 'true'
         }))

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block script %}
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'room/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="jumbotron text-center bg-primary text-white">
+    <h1>Update Kamar {{ room_number }} </h1>
+</div>
+
+<div>
+    <div>
+        <form action="{% url 'room:update_room' room_number=room_number %}" method="POST" class="form-group">
+            {% csrf_token %}
+            <div>
+                {% for field in room_form %}
+                <div class="form-group">
+                    {{ field.label_tag }} {{ field }}
+                </div>
+                {% endfor %}
+            </div><br>
+            <div class="text-center">
+                <input type="submit" class="btn btn-primary" value="Update">
+            </div>
+        </form>
+    </div><br>
+</div>
+
+{% endblock %}

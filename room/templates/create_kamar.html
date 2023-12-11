@@ -12,10 +12,10 @@
 
 <div>
     <div>
-        <form action="" method="POST" class="form-group">
+        <form action="{% url 'room:add_room' %}" method="POST" class="form-group">
             {% csrf_token %}
             <div>
-                {% for field in create_form.visible_fields %}
+                {% for field in room_form %}
                 <div class="form-group">
                     {{ field.label_tag }} {{ field }}
                 </div>
