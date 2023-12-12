@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     "ungu",
     "merah",
     "biru",
-    "crispy_forms",
     "krem",
     "pink",
 ]
