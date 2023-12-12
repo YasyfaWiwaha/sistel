@@ -77,6 +77,10 @@ def show_login(request):
                     print("hello")
                     return redirect('pink:hotel')
 
+                if(request.session['akun_pengguna']['is_hotel']):
+                    print("hotel")
+                    return redirect('merah:dashboard')
+
             except Exception as e:
                 print(e)
                 msg = "Terjadi error! Pastikan anda sudah mendaftar dan memasukkan email serta password yang benar"
