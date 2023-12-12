@@ -3,21 +3,141 @@
 <div class="d-flex justify-content-center align-items-center mt-5" >
     <div class="card shadow w-75">
         <div class="card-body">
+            <h1>Profil user</h1>
             {% if request.session.akun_pengguna.is_hotel %}
-                <h5>Nama pemilik hotel: {{fname}} {{lname}}</h5>
-                <h5>No hp: {{request.session.current_user.phone}} </h5>
-                <h5>Email: {{email}} </h5>
-                <h5>Nomer izin usaha: {{nib}} </h5>
-                <h5>Nama hotel: {{hotel_name}} cabang {{hotel_branch}} </h5>
-                <h5>Alamat: {{street}},{{district}}  {{city}} {{province}}  </h5>
+                <h5 class="row">
+                    <span class="col">
+                        Nama pemilik hotel      :
+                    </span>
+                    <span class="col">
+                        {{fname}} {{lname}}
+                    </span>
+                </h5>
+                <h5 class="row">
+                    <span class="col">
+                        No hp             :                  
+                    </span>
+                    <span class="col">
+                        {{request.session.current_user.phone}}
+                    </span>
+                </h5>
+                <h5 class="row">
+                    <span class="col">
+                        Email             :                
+                    </span>
+                    <span class="col">
+                        {{email}}
+                    </span>
+                </h5>
+                <h5 class="row">
+                    <span class="col">
+                        Nomer izin usaha  :               
+                    </span>
+                    <span class="col">
+                        {{nib}}
+                    </span>
+                </h5>
+                <h5 class="row">
+                    <span class="col">
+                        Nama hotel        :              
+                    </span>
+                    <span class="col">
+                        {{hotel_name}} cabang {{hotel_branch}}
+                    </span>
+                </h5>
+                <h5 class="row">
+                    <span class="col">
+                        Alamat            :               
+                    </span>
+                    <span class="col">
+                        {{street}},{{district}}  {{city}} {{province}}
+                    </span>
+                </h5>
             {% else %}
-                <h5>Nama depan: {{fname}} </h5>
-                <h5>Nama belakang: {{lname}} </h5>
-                <h5>No hp: {{request.session.current_user.phone}} </h5>
-                <h5>Email: {{email}} </h5>
-                <h5>NIK: {{nik}} </h5>
+                <h5 class="row">
+                    <span class="col">
+                        Nama depan        :
+                    </span>
+                    <span class="col">
+                        {{fname}} 
+                    </span>
+                </h5>
+                <h5 class="row">
+                    <span class="col">
+                        Nama belakang:
+                    </span>
+                    <span class="col">
+                        {{lname}} 
+                    </span>
+                </h5>
+                <h5 class="row">
+                    <span class="col">
+                        No hp:
+                    </span>
+                    <span class="col">
+                        {{request.session.current_user.phone}}
+                    </span>
+                </h5>
+                <h5 class="row">
+                    <span class="col">
+                        Email: 
+                    </span>
+                    <span class="col">
+                        {{email}}
+                    </span>
+                </h5>
+                <h5 class="row">
+                    <span class="col">
+                        NIK: 
+                    </span>
+                    <span class="col">
+                        {{nik}}
+                    </span>
+                </h5>
             {% endif %}
         </div>
     </div>
   </div>
+  {% if request.session.akun_pengguna.is_hotel %}
+  <div class="row mx-5 mt-5 justify-content-center align-items-center">
+    <div class="col">
+        <h3>Kamar hotel</h3>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Nomer kamar</th>
+                <th scope="col">Harga</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for room in room_data  %}
+              <tr>
+                    <th scope="row">{{room.room_number}} </th>
+                    <td>{{room.price}} </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+    </div>
+    <div class="col mb-5">
+        <h3>Fasilitas hotel</h3>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for facility in facility_data  %}
+                    <tr>
+                    <th scope="row">{{forloop.counter}} </th>
+                    <td>{{facility.facility_name}} </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+    </div>
+  </div>
+  {% endif %}
 {% endblock content %}
