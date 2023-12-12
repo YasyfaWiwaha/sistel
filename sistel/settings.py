@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "room",
     "reservasipenjemputan",
     "ungu",
+    "merah",
 ]
 
 MIDDLEWARE = [

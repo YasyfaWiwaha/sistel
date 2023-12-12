@@ -3,20 +3,19 @@
 <div class="d-flex justify-content-center align-items-center mt-5" >
     <div class="card shadow w-75">
         <div class="card-body">
-            {% if request.session.current_user.hotel %}
-                <h5>Nama pemilik hotel: {{request.session.current_user.first_name}} {{request.session.current_user.last_name}}</h5>
+            {% if request.session.akun_pengguna.is_hotel %}
+                <h5>Nama pemilik hotel: {{fname}} {{lname}}</h5>
                 <h5>No hp: {{request.session.current_user.phone}} </h5>
-                <h5>Email: {{request.session.current_user.email}} </h5>
-                <h5>NIK: {{request.session.current_user.nik}} </h5>
-                <h5>Nomer izin usaha: {{request.session.current_user.bussiness_legal}} </h5>
-                <h5>Nama hotel: {{request.session.current_user.hotel_name}} cabang {{request.session.current_user.chapter_name}} </h5>
-                <h5>Alamat: {{request.session.current_user.nik}},{{request.session.current_user.hotel_address}}, {{request.session.current_user.city}} {{request.session.current_user.province}}  </h5>
+                <h5>Email: {{email}} </h5>
+                <h5>Nomer izin usaha: {{nib}} </h5>
+                <h5>Nama hotel: {{hotel_name}} cabang {{hotel_branch}} </h5>
+                <h5>Alamat: {{street}},{{district}}  {{city}} {{province}}  </h5>
             {% else %}
-                <h5>Nama depan: {{request.session.current_user.first_name}} </h5>
-                <h5>Nama belakang: {{request.session.current_user.last_name}} </h5>
+                <h5>Nama depan: {{fname}} </h5>
+                <h5>Nama belakang: {{lname}} </h5>
                 <h5>No hp: {{request.session.current_user.phone}} </h5>
-                <h5>Email: {{request.session.current_user.email}} </h5>
-                <h5>NIK: {{request.session.current_user.nik}} </h5>
+                <h5>Email: {{email}} </h5>
+                <h5>NIK: {{nik}} </h5>
             {% endif %}
         </div>
     </div>
