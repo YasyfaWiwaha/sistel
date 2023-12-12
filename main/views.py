@@ -25,7 +25,7 @@ def setLoginSession(request, email):
     cursor = connection.cursor()
 
     #Get email
-    cursor.execute("select * from sistel.user_acc where email = '{}'".format(email))
+    cursor.execute("select * from sistel.user where email = '{}'".format(email))
 
     row = cursor.fetchone()
     email = row[0]
@@ -66,7 +66,7 @@ def show_login(request):
         passw = request.POST.get('password')
         with connection.cursor() as cursor:
             try:
-                cursor.execute("select * from sistel.user_acc where email = '{}'".format(email))
+                cursor.execute("select * from sistel.user where email = '{}'".format(email))
 
                 row = cursor.fetchall()
 
@@ -79,10 +79,11 @@ def show_login(request):
                 setLoginSession(request, email)
 
                 # if(request.session['akun_pengguna']['is_hotel']):
-                #     return redirect('hotel:dashboard')
+                #     return redirect('pink:hotel')
 
-                # if(request.session['akun_pengguna']['is_customer']):
-                #     return redirect('customer:dashboard')
+                if(request.session['akun_pengguna']['is_customer']):
+                    print("hello")
+                    return redirect('pink:hotel')
 
             except Exception as e:
                 print(e)
@@ -114,7 +115,7 @@ def show_register_hotel(request):
         rating = 0
         with connection.cursor() as cursor:
             try:
-                cursor.execute("insert into sistel.user_acc values ('{}','{}','{}', '{}') "
+                cursor.execute("insert into sistel.user values ('{}','{}','{}', '{}') "
                                                .format(email, password,fname,lname))
                 cursor.execute("insert into sistel.reservation_actor values ('{}','{}') "
                     .format(email,nohp))
@@ -144,7 +145,7 @@ def show_register_customer(request):
 
         with connection.cursor() as cursor:
             try:
-                cursor.execute("insert into sistel.user_acc values ('{}','{}','{}', '{}') "
+                cursor.execute("insert into sistel.user values ('{}','{}','{}', '{}') "
                     .format(email,password,fname,lname))
                 cursor.execute("insert into sistel.reservation_actor values ('{}','{}') "
                     .format(email,nohp))
