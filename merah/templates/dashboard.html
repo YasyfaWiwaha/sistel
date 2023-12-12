@@ -1,4 +1,12 @@
-{% extends "base.html" %}
+{% if request.session.akun_pengguna.is_hotel %}
+    {% include 'hotel_navbar.html' %}
+{% else %}
+    {% include 'customer_navbar.html' %}
+{% endif %}
+{% block additional_meta %}
+<title>DASHBOARD</title>
+{% endblock additional_meta %}
+
 {% block content %}
 <div class="d-flex justify-content-center align-items-center mt-5" >
     <div class="card shadow w-75">

@@ -22,19 +22,19 @@ def dashboard(request: HttpRequest):
     
     sql = f"""
     select *
-    from sistel.user_acc
+    from sistel.user
     inner join sistel.customer
-    on user_acc.email = customer.email
-    where user_acc.email = '{email.lower()}';
+    on customer.email = sistel.user.email
+    where sistel.user.email = '{email.lower()}';
     """
     
     if is_hotel:
         sql = f"""
         select *
-        from sistel.user_acc
+        from sistel.user
         inner join sistel.hotel
-        on user_acc.email = hotel.email
-        where user_acc.email = '{email.lower()}';
+        on hotel.email = sistel.user.email
+        where sistel.user.email = '{email.lower()}';
         """
 
     cursor.execute(sql)

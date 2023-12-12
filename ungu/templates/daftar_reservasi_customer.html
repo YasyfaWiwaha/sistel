@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'hotel_navbar.html' %}
 
 {% block content %}
 
@@ -50,10 +50,11 @@
                 <td class="text-center">{{data.rsv_id}}</td>
                 <td class="text-center">{{data.rnum}}</td>
                 <td class="text-center">{{data.datetime}}</td>
-                <td class="text-center">{{data.isactive}}</td>
+                <td class="text-center">{{data.stat}}</td>
                 <td class="text-center">
-                    <a href="/customer/daftar_reservasi/update_status/{{data.rsv_id}}" class="btn btn-primary">Ubah Status</a>
                     <a href="/customer/daftar_reservasi/detail_reservasi/{{data.rsv_id}}" class="btn btn-primary">Detail</a>
+                    <a href="#" class="btn btn-primary">Cancel Reservasi</a>
+                    <a href="#" class="btn btn-primary">Add Complaints</a>
                 </td>
             </tr>
             {% endfor %}
