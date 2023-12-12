@@ -88,7 +88,7 @@ def show_login(request):
 @csrf_exempt
 def logout(request):
     request.session.flush()
-    return redirect("")
+    return redirect("main:show_login")
 
 def show_register(request):
     return render(request, "register.html")
@@ -111,7 +111,7 @@ def show_register_hotel(request):
         rating = 0
         with connection.cursor() as cursor:
             try:
-                cursor.execute("insert into sistel.user_acc values ('{}','{}','{}', '{}') "
+                cursor.execute("insert into sistel.user values ('{}','{}','{}', '{}') "
                                                .format(email, password,fname,lname))
                 cursor.execute("insert into sistel.reservation_actor values ('{}','{}') "
                     .format(email,nohp))
@@ -141,7 +141,7 @@ def show_register_customer(request):
 
         with connection.cursor() as cursor:
             try:
-                cursor.execute("insert into sistel.user_acc values ('{}','{}','{}', '{}') "
+                cursor.execute("insert into sistel.user values ('{}','{}','{}', '{}') "
                     .format(email,password,fname,lname))
                 cursor.execute("insert into sistel.reservation_actor values ('{}','{}') "
                     .format(email,nohp))
