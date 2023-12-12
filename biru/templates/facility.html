@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="d-flex justify-content-center align-items-center mt-5" >
+    <div class="card shadow w-75">
+        <div class="card-body">
+            <a href="{% url 'addfacility' %}" class="btn btn-primary">Tambah fasilitas</a>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nama fasilitas</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for facility in facility_data  %}
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>{{facility.facility_name}}</td>
+                            <td>
+                                <a href="{% url 'deletefacility' facility_name=facility.facility_name %}" class="btn btn-primary">Hapus</a>
+                                <a href="{% url 'updatefacility' facility_name=facility.facility_name %}" class="btn btn-primary">Ubah</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+        </div>
+    </div>
+  </div>
+{% endblock content %} 

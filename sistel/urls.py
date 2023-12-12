@@ -22,4 +22,5 @@ urlpatterns = [
     path('', include('main.urls')),
     path('room/', include('room.urls')),
     path('ungu/', include('ungu.urls')),
+    path('biru/', include('biru.urls')),
 ]

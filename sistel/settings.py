@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     "reservasipenjemputan",
     "ungu",
     "merah",
+    "biru",
+    "crispy_forms",
+    #"crispy_bootstrap5",
 ]
 
 MIDDLEWARE = [
