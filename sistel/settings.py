@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "room",
     "ungu",
     "merah",
+    "krem",
 ]
 
 MIDDLEWARE = [
