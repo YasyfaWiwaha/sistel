@@ -10,5 +10,11 @@
             "src": "/(.*)",
             "dest": "sistel/wsgi.py"
         }
+    ],
+    "rewrites": [
+        {
+            "source": "/(.*)",
+            "destination": "sistel/wsgi.py"
+        }
     ]
 }
