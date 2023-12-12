@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<title>RESERVASI KAMAR HOTEL</title>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #fff; /* Set the background color to white */
+    }
+
+    .mainpnl {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        background-color: #fff; /* Background color from the "Login Page" template */
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .form.regis.admin h1 {
+        text-align: center;
+        margin-top: 0;
+        color: #A73121; /* Title color from the "Login Page" template */
+    }
+
+    form {
+        padding: 20px;
+    }
+
+    .btn.btn-outline-primary {
+        background-color: #A73121;
+        color: #fff;
+        border-color: #A73121;
+    }
+
+    ul {
+        font-family: ui-serif;
+        font-size: 20px;
+    }
+
+    .centered {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .form.regis.admin h1 {
+        text-align: center;
+        margin-top: 0;
+    }
+
+    .table-container {
+        margin-top: 20px;
+    }
+</style>
+
+<div class="mainpnl centered container w-75 align-middle" id="outline1">
+    <div class="form regis admin">
+        <h1>RESERVASI KAMAR HOTEL</h1>
+
+        <form method="POST">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>Minimal Price: </td>
+                    <td><input required type="number" name="min_price" placeholder="Minimal Price" class="form-control"></td>
+                </tr>
+
+                <tr>
+                    <td>Maximum Price: </td>
+                    <td><input required type="number" name="max_price" placeholder="Maximum Price" class="form-control"></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td><button class="btn btn-outline-primary" type="submit" value="Search">Search</button></td>
+                </tr>
+            </table>
+        </form>
+
+        <h1>LIST HOTEL YANG SESUAI</h1>
+
+        {% if right_wrong %}
+            <table class="table table-striped table-bordered table-hover table-container">
+                <thead>
+                    <tr>
+                        <th>Number</th>
+                        <th>Nama Hotel</th>
+                        <th>Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for hotel in fetched_data %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ hotel.1 }}</td>
+                            <td>{{ hotel.4 }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Tidak ada hotel yang sesuai</p>
+        {% endif %}
+    </div>
+</div>
+
+    <div class="card shadow w-75">
+        <div class="card-body">
+            <h5>Nama hotel: {{ hotel_name }} </h5>
+            <h5>Deskripsi: {{ description_text }} </h5>
+            <h5>NIB: {{ nib }} </h5>
+            <h5>Rating: {{ rating }} </h5>
+            <h5>Star </h5>
+            <h5>Alamat: {{ street }} kec {{ district }}, {{ city }} {{ province }} </h5>
+            <h5>Min Check Out: {{ min_checkout }} </h5>
+            <h5>Max Check Out: {{ max_checkout }} </h5>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Kamar tersedia</th>
+                        <th scope="col">Harga per malam</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for room in room_data  %}
+                        <tr>
+                            <th scope="row">{{ room.room_number }} </th>
+                            <td>{{ room.price }} </td>
+                            <td><a href="{% url 'reservation' id=room.room_number %}" class="btn btn-primary">Reservasi</a> </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}

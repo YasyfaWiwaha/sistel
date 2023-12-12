@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="d-flex justify-content-center align-items-center mt-5" >
+    <div class="card shadow w-75">
+        <div class="card-body">
+            <form method="post" class="card-body row g-3">
+                {% csrf_token %}
+                <label for="">Email</label>
+                <input type="email" value="{{email}}" class="form-control" disabled>
+                <label for="">Nama</label>
+                <input type="text" value="{{name}}" class="form-control" disabled>
+                {{form|crispy}}
+                <center class="col-12">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </center>
+              </form>
+        </div>
+    </div>
+  </div>
+{% endblock content %}

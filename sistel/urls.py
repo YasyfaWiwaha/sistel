@@ -25,6 +25,7 @@ urlpatterns = [
     path('room/', include('room.urls')),
     path('ungu/', include('ungu.urls')),
     path('merah/', include('merah.urls')),
+    path('pink/', include('pink.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
