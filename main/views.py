@@ -77,11 +77,8 @@ def show_login(request):
 
                 setLoginSession(request, email)
 
-                if(request.session['akun_pengguna']['is_hotel']):
-                    return redirect('ungu:daftar_reservasi_hotel')
-
-                # if(request.session['akun_pengguna']['is_customer']):
-                #     return redirect('customer:dashboard')
+                if(request.session['akun_pengguna']):
+                    return redirect('merah:dashboard')
 
             except Exception as e:
                 print(e)
