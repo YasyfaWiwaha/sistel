@@ -4,6 +4,8 @@ from django.db import connection, DatabaseError
 from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
 
+import json
+
 # Class USER
 class User:
     def __init__(self, email, is_hotel, is_customer):
@@ -25,7 +27,7 @@ def setLoginSession(request, email):
     cursor = connection.cursor()
 
     #Get email
-    cursor.execute("select * from sistel.user_acc where email = '{}'".format(email))
+    cursor.execute("select * from sistel.user where email = '{}'".format(email))
 
     row = cursor.fetchone()
     email = row[0]
@@ -45,8 +47,6 @@ def setLoginSession(request, email):
     if row == None: isCustomer = False
 
     # Cek cek
-    print(email)
-    print(isCustomer)
 
     if isHotel:
         user = User(email, True, False)
@@ -56,23 +56,20 @@ def setLoginSession(request, email):
     
     if user:
         request.session['akun_pengguna'] = user.getJson()
-        print(request.session['akun_pengguna'])
-
 @csrf_exempt
 def show_login(request):
     if request.method == 'POST':
         email = request.POST.get('email')
-        print(email)
         passw = request.POST.get('password')
         with connection.cursor() as cursor:
             try:
-                cursor.execute("select * from sistel.user_acc where email = '{}'".format(email))
+                cursor.execute("select * from sistel.user where email = '{}'".format(email))
 
                 row = cursor.fetchall()
 
-                print(row)
 
                 password  = row[0][1]
+
                 if password != passw: raise Exception
 
                 setLoginSession(request, email)
@@ -88,13 +85,17 @@ def show_login(request):
 
     return render(request, "login.html")
 
+@csrf_exempt
+def logout(request):
+    request.session.flush()
+    return redirect("")
+
 def show_register(request):
     return render(request, "register.html")
 
 @csrf_exempt
 def show_register_hotel(request):
     if request.method == 'POST':
-        print(request.POST)
         email = request.POST.get('email')
         password = request.POST.get('password')
         fname = request.POST.get('fname')

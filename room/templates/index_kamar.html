@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block script %}
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'room/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- Navbar -->
+{% include "hotel_navbar.html" %}
+
+    <div class="jumbotron text-center bg-primary text-white">
+        <h1>Kamar Hotel</h1>
+    </div>
+  
+  <div class="container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nomor Kamar</th>
+          <th>Harga Kamar</th> 
+          <th>Lantai Kamar</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for room in rooms %}
+        <tr>
+            <td>{{ room.2 }}</td>
+            <td>{{ room.3 }}</td>
+            <td>{{ room.4 }}</td>
+            <td>
+                <a class="btn btn-success" href="{% url 'room:update_room' room_number=room.2 %}">Add Facilities</a>
+                <a class="btn btn-info" href="{% url 'room:update_room' room_number=room.2 %}">Update</a>
+                <a class="btn btn-danger" href="{% url 'room:delete_room' room_number=room.2%}">Delete</a>
+            </td>
+
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <a class="btn btn-primary mt-3" href="{% url 'room:add_room' %}">Add New Room</a>
+
+</div>
+{% endblock %}
