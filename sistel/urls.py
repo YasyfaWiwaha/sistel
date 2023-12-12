@@ -24,6 +24,7 @@ urlpatterns = [
     path('', include('main.urls')),
     path('room/', include('room.urls')),
     path('ungu/', include('ungu.urls')),
+    path('biru/', include('biru.urls')),
     path('merah/', include('merah.urls')),
     path('pink/', include('pink.urls')),
 ]
