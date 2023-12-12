@@ -7,8 +7,16 @@ from .forms import *
 def index(request):
     if(request.session['akun_pengguna']['is_hotel']):
         response = {}
+        email = request.session['akun_pengguna']['email']
+
         with connection.cursor() as c:
-            c.execute('SELECT * FROM sistel.ROOM')
+            c.execute(f"SELECT hotel_name, hotel_branch FROM sistel.HOTEL WHERE email ='{email}'")
+            hotel = c.fetchall()
+            hotel_name = hotel[0][0]
+            hotel_branch = hotel[0][1]
+
+        with connection.cursor() as c:
+            c.execute(f"SELECT * FROM sistel.ROOM WHERE hotel_name = '{hotel_name}' AND hotel_branch = '{hotel_branch}'")
             response['rooms'] = c.fetchall()
 
         return render(request, 'index_kamar.html', response)
