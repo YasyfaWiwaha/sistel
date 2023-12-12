@@ -69,7 +69,6 @@ def show_login(request):
 
 
                 password  = row[0][1]
-
                 if password != passw: raise Exception
 
                 setLoginSession(request, email)

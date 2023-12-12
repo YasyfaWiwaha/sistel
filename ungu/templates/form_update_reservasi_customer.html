@@ -1,0 +1,56 @@
+{% extends 'hotel_navbar.html' %}
+
+{% block content %}
+<title>UPDATE STATUS RESERVASI</title>
+<style>
+    ul {
+        font-family: ui-serif;
+        font-size: 20px;
+    }
+    .centered {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
+<div class="mainpnl centered container w-75 align-middle">
+    <div class = "form ubah status hotel">
+        <h1 style="text-align: center">UPDATE STATUS RESERVASI</h1>
+
+        <form id="update-status" method="POST" action="/customer/daftar_reservasi/update_status/{{rsv_id}}">
+            {% csrf_token %}
+            <table class="table table-sm">
+                <tr>
+                    <td class="text-center">ID Reservasi: </td>
+                    <td class="text-center"><input disabled type="text" name="rsv_id" placeholder="ID Reservasi" class="form-control" value="{{rsv_id}}"></td>
+                </tr>
+
+                <tr>
+                    <td class="text-center">Nomor Kamar: </td>
+                    <td class="text-center"><input disabled type="text" name="rnum" placeholder="Nomor Kamar" class="form-control" value={{rnum}}></td>
+                </tr>
+
+                <tr>
+                    <td class="text-center">Status: </td>
+                    <td>
+                        <select id="isactive" name="isactive">
+                        <option value="True">True</option>
+                        <option value="False">False</option>
+                        </select>
+                </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td class="text-center"><button class="btn btn-outline-primary" type="submit" value="Simpan">Simpan</button></td>
+                </tr>
+            </table>
+        </form>
+        <br>
+        {% if msg %}
+        <h3 style="text-align: center; color: red;">{{msg}}</h3>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}

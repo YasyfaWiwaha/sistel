@@ -40,9 +40,9 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "main",
     "room",
-    "reservasipenjemputan",
     "ungu",
     "merah",
+    "krem",
 ]
 
 MIDDLEWARE = [

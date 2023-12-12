@@ -23,8 +23,8 @@ def dashboard(request: HttpRequest):
     sql = f"""
     select *
     from sistel.user
-    join sistel.customer
-    on sistel.user.email = customer.email
+    inner join sistel.customer
+    on customer.email = sistel.user.email
     where sistel.user.email = '{email.lower()}';
     """
     
@@ -32,8 +32,8 @@ def dashboard(request: HttpRequest):
         sql = f"""
         select *
         from sistel.user
-        join sistel.hotel
-        on sistel.user.email = hotel.email
+        inner join sistel.hotel
+        on hotel.email = sistel.user.email
         where sistel.user.email = '{email.lower()}';
         """
 
@@ -62,19 +62,19 @@ def complaint(request: HttpRequest,id):
     
     sql = f"""
         select *
-        from sistel.user
+        from sistel.user_acc
         inner join sistel.customer
-        on user.email = customer.email
-        where user.email = '{email.lower()}';
+        on user_acc.email = customer.email
+        where user_acc.email = '{email.lower()}';
         """
             
     if is_hotel:
         sql = f"""
         select *
         from sistel.user
-        inner join sistel.hotel
-        on user.email = hotel.email
-        where user.email = '{email.lower()}';
+        join sistel.hotel
+        on sistel.user.email = hotel.email
+        where sistel.user.email = '{email.lower()}';
         """
 
     cursor.execute(sql)

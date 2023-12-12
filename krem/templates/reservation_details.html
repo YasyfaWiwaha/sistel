@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="d-flex justify-content-center align-items-center mt-5" >
+    <div class="card shadow w-75">
+
+      <div method="post" class="card-body row g-3">
+        <p>ID Reservasi: {{rsv_id}} </p>
+        <p>Nomor Kamar: {{rnum}} </p>
+        <p>Nama Hotel: {{rhotelname}} </p>
+        <p>Cabang Hotel: {{rhotelbranch}} </p>
+        <p>Tanggal: {{datetime}} </p>
+        <p>Status: {{isactive}} </p>
+        {% if vehicle_num %}
+        {% else %}
+          <p>“Tidak ada reservasi untuk shuttle pada reservasi ini.”</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock content %}

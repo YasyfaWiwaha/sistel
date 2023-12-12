@@ -1,7 +1,7 @@
-{% extends 'admin_base.html' %}
+{% extends 'hotel_navbar.html' %}
 
-{% block additional_meta %}
-<title>Form UBAH STATUS DAFTAR RESERVASI HOTEL</title>
+{% block content %}
+<title>UPDATE STATUS RESERVASI</title>
 <style>
     ul {
         font-family: ui-serif;
@@ -14,39 +14,38 @@
         transform: translate(-50%, -50%);
     }
 </style>
-{% endblock additional_meta %}
+<div class="mainpnl centered container w-75 align-middle">
+    <div class = "form ubah status hotel">
+        <h1 style="text-align: center">UPDATE STATUS RESERVASI</h1>
 
-{% block content %}
-<div class="mainpnl centered container w-75 align-middle" id="outline1">
-    <div class = "form regis admin">
-        <h1 style="text-align: center">Form UBAH STATUS DAFTAR RESERVASI HOTEL</h1>
-
-        <form id="update-status" method="POST" action="/hotel/update_status_reservasi_hotel/{{id}}">
+        <form id="update-status" method="POST" action="/hotel/daftar_reservasi/update_status/{{rsv_id}}">
             {% csrf_token %}
-            <table>
+            <table class="table table-sm">
                 <tr>
-                    <td>ID Reservasi: </td>
-                    <td><input disabled type="text" name="rsv_id" placeholder="ID Reservasi" class="form-control" value="{{rsv_id}}"></td>
+                    <td class="text-center">ID Reservasi: </td>
+                    <td class="text-center"><input disabled type="text" name="rsv_id" placeholder="ID Reservasi" class="form-control" value="{{rsv_id}}"></td>
                 </tr>
 
                 <tr>
-                    <td>Nomor Kamar: </td>
-                    <td><input disabled type="text" name="rnum" placeholder="Nomor Kamar" class="form-control" value={{rnum}}></td>
+                    <td class="text-center">Nomor Kamar: </td>
+                    <td class="text-center"><input disabled type="text" name="rnum" placeholder="Nomor Kamar" class="form-control" value={{rnum}}></td>
                 </tr>
 
                 <tr>
-                    <td>Status: </td>
+                    <td class="text-center">Status: </td>
                     <td>
-                        <select id="isactive" name="isactive">
-                        <option value="True">True</option>
-                        <option value="False">False</option>
+                        
+                        <select id="status" name="status">
+                            {% for status in stats %}
+                        <option value="{{ status.id }}">{{ status.stat }}</option>
+                        {% endfor %}
                         </select>
                 </td>
                 </tr>
 
                 <tr>
                     <td></td>
-                    <td><button class="btn btn-outline-primary" type="submit" value="Simpan">Simpan</button></td>
+                    <td class="text-center"><button class="btn btn-outline-primary" type="submit" value="Simpan">Simpan</button></td>
                 </tr>
             </table>
         </form>
