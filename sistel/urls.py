@@ -23,14 +23,8 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path('', include('main.urls')),
     path('room/', include('room.urls')),
-<<<<<<< HEAD
     path('ungu/', include('ungu.urls')),
     path('merah/', include('merah.urls')),
-=======
-    path('', include('merah.urls')),
-    path('', include('ungu.urls')),
-
->>>>>>> e727fe4cedfd469db614a2e44f5efae9634026f7
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
