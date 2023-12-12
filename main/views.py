@@ -56,8 +56,6 @@ def setLoginSession(request, email):
     
     if user:
         request.session['akun_pengguna'] = user.getJson()
-        print(request.session['akun_pengguna'])
-
 @csrf_exempt
 def show_login(request):
     if request.method == 'POST':
@@ -85,6 +83,11 @@ def show_login(request):
                 return render(request, 'login.html', context)
 
     return render(request, "login.html")
+
+@csrf_exempt
+def logout(request):
+    request.session.flush()
+    return redirect("")
 
 def show_register(request):
     return render(request, "register.html")

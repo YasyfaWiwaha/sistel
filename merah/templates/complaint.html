@@ -2,14 +2,18 @@
 {% load crispy_forms_tags %}
 {% block content %}
 <div class="d-flex justify-content-center align-items-center mt-5" >
-    <div class="card shadow w-75">
+    <div class="card shadow w-75 mb-5">
         <div class="card-body">
             <form method="post" class="card-body row g-3">
                 {% csrf_token %}
+                <label for="">Email</label>
+                <input type="email" value="{{email}}" class="form-control" disabled>
+                <label for="">Nama</label>
+                <input type="text" value="{{name}}" class="form-control" disabled>
                 {{form|crispy}}
-                <div class="col-12">
+                <center>
                   <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
+                </center>
               </form>
         </div>
     </div>
