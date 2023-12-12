@@ -78,12 +78,12 @@ WSGI_APPLICATION = "sistel.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": 'django.db.backends.postgresql',
-        "NAME": 'ptgjpywr',
-        "USER": 'ptgjpywr',
-        "PASSWORD": 'vZujOyEfjNgP-dsWmKQvH8vj67VdBFQ1',
-        "HOST": 'pom.db.elephantsql.com',
-        "PORT": '5432',
+        "ENGINE": 'django.db.backends.postgresql_psycopg2',
+        "NAME": 'railway',
+        "USER": 'postgres',
+        "PASSWORD": '2*d145612-44g1Fg1fCf65cAc31a313E',
+        "HOST": 'monorail.proxy.rlwy.net',
+        "PORT": '46250',
     }
 }
 

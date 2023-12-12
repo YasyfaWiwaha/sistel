@@ -18,7 +18,7 @@
     <div class = "form ubah status hotel">
         <h1 style="text-align: center">UPDATE STATUS RESERVASI</h1>
 
-        <form id="update-status" method="POST" action="/hotel/daftar_reservasi/update_status/{{rsv_id}}">
+        <form id="update-status" method="POST" action="/customer/daftar_reservasi/update_status/{{rsv_id}}">
             {% csrf_token %}
             <table class="table table-sm">
                 <tr>
@@ -34,11 +34,9 @@
                 <tr>
                     <td class="text-center">Status: </td>
                     <td>
-                        
-                        <select id="status" name="status">
-                            {% for status in stats %}
-                        <option value="{{ status.id }}">{{ status.stat }}</option>
-                        {% endfor %}
+                        <select id="isactive" name="isactive">
+                        <option value="True">True</option>
+                        <option value="False">False</option>
                         </select>
                 </td>
                 </tr>

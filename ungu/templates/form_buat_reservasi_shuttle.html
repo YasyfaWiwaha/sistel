@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<title>UPDATE STATUS RESERVASI</title>
+<title>RESERVASI SHUTTLE</title>
 <style>
     ul {
         font-family: ui-serif;
@@ -15,10 +15,10 @@
     }
 </style>
 <div class="mainpnl centered container w-75 align-middle">
-    <div class = "form ubah status hotel">
-        <h1 style="text-align: center">UPDATE STATUS RESERVASI</h1>
+    <div class = "form-buat-reservasi-shuttle">
+        <h1 style="text-align: center">RESERVASI SHUTTLE</h1>
 
-        <form id="update-status" method="POST" action="/hotel/daftar_reservasi/update_status/{{rsv_id}}">
+        <form id="buat-reservasi-shuttle" method="POST" action="/customer/daftar_reservasi/detail_reservasi/buat_reservasi_shuttle/{{rsv_id}}">
             {% csrf_token %}
             <table class="table table-sm">
                 <tr>
@@ -27,19 +27,14 @@
                 </tr>
 
                 <tr>
-                    <td class="text-center">Nomor Kamar: </td>
-                    <td class="text-center"><input disabled type="text" name="rnum" placeholder="Nomor Kamar" class="form-control" value={{rnum}}></td>
-                </tr>
-
-                <tr>
-                    <td class="text-center">Status: </td>
+                    <td class="text-center">Kendaraan: </td>
                     <td>
-                        
-                        <select id="status" name="status">
-                            {% for status in stats %}
-                        <option value="{{ status.id }}">{{ status.stat }}</option>
+                        <select id="vehicle" name="vehicle">
+                            {% for vehicle in vehicle %}
+                        <option value="{{ vehicle.platnum }}">{{ vehicle.vehicle_brand}} {{vehicle.vehicle_type}}</option>
                         {% endfor %}
                         </select>
+                            
                 </td>
                 </tr>
 
