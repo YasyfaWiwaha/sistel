@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-n@k&vnw*ui1qx^7aibgn5qg&+he=xhuy8=@x5*$^c6zgo$km37
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['*', '.vercel.app']
 
 
 # Application definition
@@ -38,7 +38,10 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "main",
+    "room",
+    "reservasipenjemputan",
     "ungu",
+    "merah",
 ]
 
 MIDDLEWARE = [
@@ -123,6 +126,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
+
+
+# This is the directory for storing `collectstatic` results.
+# This shouldn't be included in your Git repository.
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

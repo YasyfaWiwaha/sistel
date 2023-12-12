@@ -4,6 +4,8 @@ from django.db import connection, DatabaseError
 from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
 
+import json
+
 # Class USER
 class User:
     def __init__(self, email, is_hotel, is_customer):
@@ -45,8 +47,6 @@ def setLoginSession(request, email):
     if row == None: isCustomer = False
 
     # Cek cek
-    print(email)
-    print(isCustomer)
 
     if isHotel:
         user = User(email, True, False)
@@ -62,7 +62,6 @@ def setLoginSession(request, email):
 def show_login(request):
     if request.method == 'POST':
         email = request.POST.get('email')
-        print(email)
         passw = request.POST.get('password')
         with connection.cursor() as cursor:
             try:
@@ -70,16 +69,14 @@ def show_login(request):
 
                 row = cursor.fetchall()
 
-                print(row)
 
                 password  = row[0][1]
-                print(password)
                 if password != passw: raise Exception
 
                 setLoginSession(request, email)
 
-                if(request.session['akun_pengguna']['is_hotel']):
-                    return redirect('ungu:daftar_reservasi_hotel')
+                # if(request.session['akun_pengguna']['is_hotel']):
+                #     return redirect('hotel:dashboard')
 
                 if(request.session['akun_pengguna']['is_customer']):
                     return redirect('ungu:daftar_reservasi_customer')
@@ -98,7 +95,6 @@ def show_register(request):
 @csrf_exempt
 def show_register_hotel(request):
     if request.method == 'POST':
-        print(request.POST)
         email = request.POST.get('email')
         password = request.POST.get('password')
         fname = request.POST.get('fname')
