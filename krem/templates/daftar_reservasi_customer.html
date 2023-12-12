@@ -1,0 +1,67 @@
+{% extends 'customer_navbar.html' %}
+
+{% block content %}
+
+<style>
+    ul {
+        font-family: ui-serif;
+        font-size: 20px;
+    }
+    .centered {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+     table {
+         font-family: arial, sans-serif;
+         border-collapse: collapse;
+         width: 100%;
+     }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+<title>DAFTAR RESERVASI KAMAR</title>
+<div class="mainpnl centered container w-75 align-middle">
+    {% if r_id_exists %}
+    <h1>DAFTAR RESERVASI KAMAR</h1>
+    <table class="table table-sm">
+        <tbody>
+            <tr>
+                <th scope="row">No</th>
+                <th scope="row">ID Reservasi</th>
+                <th scope="row">Nomor Kamar</th>
+                <th scope="row">Date</th>
+                <th scope="row">Status Reservasi</th>
+                <th scope="row">Action</th>
+            </tr>
+            {% for data in data %}
+            <tr>
+                <td class="text-center">{{forloop.counter}}</td>
+                <td class="text-center">{{data.rsv_id}}</td>
+                <td class="text-center">{{data.rnum}}</td>
+                <td class="text-center">{{data.datetime}}</td>
+                <td class="text-center">{{data.stat}}</td>
+                <td class="text-center">
+                    <a href="/customer/daftar_reservasi/detail_reservasi/{{data.rsv_id}}" class="btn btn-primary">Detail</a>
+                    <a href="#" class="btn btn-primary">Cancel Reservasi</a>
+                    <a href="#" class="btn btn-primary">Add Complaints</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <h1 class="text-center">Belum Ada Reservasi</h1>
+    {% endif %}
+</div>
+{% endblock content %}

@@ -24,6 +24,7 @@ urlpatterns = [
     path('', include('main.urls')),
     path('room/', include('room.urls')),
     path('ungu/', include('ungu.urls')),
+    path('krem/', include('krem.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
