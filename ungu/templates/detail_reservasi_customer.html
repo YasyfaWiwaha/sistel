@@ -1,0 +1,108 @@
+{% extends 'hotel_navbar.html' %}
+
+{% block content %}
+
+<style>
+    ul {
+        font-family: ui-serif;
+        font-size: 20px;
+    }
+    .centered {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+     table {
+         font-family: arial, sans-serif;
+         border-collapse: collapse;
+         width: 100%;
+     }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+<title>DETAIL RESERVASI</title>
+<div class="mainpnl centered container w-75 align-middle">
+    <h1>DETAIL RESERVASI</h1>
+    <table class="table table-sm">
+        <h2>KAMAR</h2>
+        <tbody>
+            <tr>
+                <th scope="row">ID Reservasi:</th>
+                <td class="text-center">{{ room_rsv_id }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Nomor Kamar:</th>
+                <td class="text-center">{{ rnum }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Nama Hotel:</th>
+                <td class="text-center">{{ rhotelname }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Cabang Hotel:</th>
+                <td class="text-center">{{ rhotelbranch }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Tanggal:</th>
+                <td class="text-center">{{ room_datetime }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Status:</th>
+                <td class="text-center">{{ room_isactive }}</td>
+            </tr>
+        </tbody>
+    </table>
+    {% if shuttle_exists %}
+        <table class="table table-sm">
+            <h2>SHUTTLE</h2>
+            <tbody>
+                <tr>
+                    <th scope="row">ID Reservasi:</th>
+                    <td class="text-center">{{ shuttle_rsv_id }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Nomor Kendaraan:</th>
+                    <td class="text-center">{{ shuttle_vnum }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Nomor HP Driver:</th>
+                    <td class="text-center">{{ shuttle_phonenum }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Tanggal:</th>
+                    <td class="text-center">{{ shuttle_datetime }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Status:</th>
+                    <td class="text-center">{{ shuttle_isactive }}</td>
+                </tr>
+            </tbody>
+        </table>
+    {% else %}
+        <table class="table table-sm">
+            <h2>SHUTTLE</h2>
+            <tbody>
+                <tr>
+                    <td class="text-center">Tidak ada reservasi untuk shuttle pada reservasi ini</td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <a href="/customer/daftar_reservasi/detail_reservasi/buat_reservasi_shuttle/{{ room_rsv_id }}" class="btn btn-primary">Tambah</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    {% endif %}
+    <a href="{% url 'ungu:daftar_reservasi_customer' %}" class="btn btn-primary">Back</a>
+</div>
+{% endblock content %}
